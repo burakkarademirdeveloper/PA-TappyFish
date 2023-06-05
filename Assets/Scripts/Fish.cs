@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -9,6 +10,7 @@ public class Fish : MonoBehaviour
     private int _angle;
     private int _maxAngle = 20;
     private int _minAngle = -60;
+    public Score score;
     
     void Start()
     {
@@ -20,7 +22,10 @@ public class Fish : MonoBehaviour
         {
             _rb.velocity = new Vector2(_rb.velocity.x, speed);
         }
+    }
 
+    private void FixedUpdate()
+    {
         if (_rb.velocity.y > 0)
         {
             if (_angle <= _maxAngle)
@@ -36,5 +41,13 @@ public class Fish : MonoBehaviour
             }
         }
         transform.rotation = Quaternion.Euler(0, 0, _angle);
+    }
+
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.CompareTag("Obstacle"))
+        {
+            score.Scored();
+        }
     }
 }

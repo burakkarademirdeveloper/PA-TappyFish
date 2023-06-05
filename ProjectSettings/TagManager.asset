@@ -53,3 +53,6 @@ TagManager:
   - name: SortingLayer_3
     uniqueID: 1474815111
     locked: 0
+  - name: Canvas
+    uniqueID: 3887468003
+    locked: 0
